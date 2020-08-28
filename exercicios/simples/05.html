@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="container">
+        <h3>
+            5) Escreva um programa para ler as dimensões de uma cozinha retangular (comprimento, largura e altura),
+            calcular e escrever a quantidade de caixas de azulejos para se colocar em todas as suas paredes (considere
+            que não será descontada a área ocupada por portas e janelas). Cada caixa de azulejos possui 1,5 m2.
+        </h3>
+        <div class="form-group">
+            <input type="text" name="comprimento" id="comprimento" class="form-control" placeholder="Comprimento">
+        </div>
+        <div class="form-group">
+            <input type="text" name="largura" id="largura" class="form-control" placeholder="Largura">
+        </div>
+        <div class="form-group">
+            <input type="text" name="altura" id="altura" class="form-control" placeholder="Altura">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" onclick="calculaCaixa(
+                parseFloat(document.getElementById('comprimento').value),
+                parseFloat(document.getElementById('altura').value),
+                parseFloat(document.getElementById('largura').value))"> Calcular </button>
+        </div>
+
+        <p id="saidaTexto"></p>
+    </section>
+    <script>
+
+        var quantidaCaixas = [];
+                
+        function calculaCaixa(comprimento, largura, altura) {
+            var quantCaixa = (((comprimento * altura) + (largura * altura)) / 1.5) * 2;
+            quantidaCaixas.push(quantCaixa);
+            saida("<strong> A quantidade de caixa: " + quantCaixa.toFixed(2) + ".</strong>");
+        }
+        
+        function saida(texto){
+            console.log(quantidaCaixas);
+            document.getElementById("saidaTexto").innerHTML=texto;
+        }
+     
+
+        // function calculaCaixa() {
+        //     var comprimento = parseFloat(document.getElementById("comprimento").value);
+        //     var altura = parseFloat(document.getElementById("altura").value);
+        //     var largura = parseFloat(document.getElementById("largura").value);
+        //     var quantCaixa = (((comprimento * altura) + (largura * altura)) / 1.5) * 2;
+        //     saida.innerHTML = "<strong> A quantidade de caixa: " + quantCaixa.toFixed(2) + ".</strong>";
+        // }
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<!-- 
+    Simples
+    6) Um motorista de táxi deseja calcular o rendimento de seu carro na praça. Sabendo-se que o preço do combustível é de R$ 4,87, escreva um programa para ler: a marcação do odômetro (Km) no início do dia, a marcação (Km) no final do dia, o número de litros de combustível gasto e o valor total (R$) recebido dos passageiros. Calcular e escrever: a média do consumo em Km/L e o lucro (líquido) do dia. 
+
+    Seleção
+    7) Escreva um programa para ler 2 valores (considere que não serão informados valores iguais) e 
+escrever o maior deles. 
+    8) Escreva um programa para ler o ano de nascimento de uma pessoa e escrever uma mensagem que 
+diga se ela poderá ou não votar este ano (não é necessário considerar o mês em que ela nasceu). 
+    9) As maçãs custam R$ 0,30 cada se forem compradas menos do que uma dúzia, e R$ 0,25 se forem 
+compradas pelo menos doze. Escreva um programa que leia o número de maçãs compradas, calcule e escreva o valor total da compra. 
+-->

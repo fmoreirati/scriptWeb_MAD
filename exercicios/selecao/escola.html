@@ -10,43 +10,53 @@
 
 <body>
     <section class="container">
-        <h4>
-          <p> 2) Escreva um programa que leia as notas das duas avaliações normais e a nota da avaliação optativa.
-            Caso o aluno não tenha feito a optativa deve ser fornecido o valor -1. Calcular a média do semestre  considerando que a prova optativa substitui a nota mais baixa entre as duas primeiras avaliações. Escrever a média e mensagens que indiquem se o aluno foi aprovado, reprovado ou está em exame, de acordo com as informações abaixo:
-           <ul>
-               <li> Aprovado : média >= 6.0</li>
-               <li> Reprovado: media < 3.0 </li>
-               <li> Exame: média>= 3.0 e < 6.0 </li>
-           </ul>
-           </p>
+        <p> 2) Escreva um programa que leia as notas das duas avaliações normais e a nota da avaliação optativa.
+            Caso o aluno não tenha feito a optativa deve ser fornecido o valor -1. Calcular a média do semestre
+            considerando que a prova optativa substitui a nota mais baixa entre as duas primeiras avaliações. Escrever a
+            média e mensagens que indiquem se o aluno foi aprovado, reprovado ou está em exame, de acordo com as
+            informações abaixo:
+        <ul>
+            <li> Aprovado : média >= 6.0</li>
+            <li> Reprovado: media < 3.0 </li>
+            <li> Exame: média>= 3.0 e < 6.0 </li>
+        </ul>
+        </p>
 
-            <p>  3) Escreva um programa para ler as notas das duas avaliações de um aluno no semestre, calcular e escrever a média semestral e a seguinte mensagem: PARABÉNS! Você foi aprovado! somente se o aluno foi aprovado (considere 6.0 a média mínima para aprovação). </p>
+        <p> 3) Escreva um programa para ler as notas das duas avaliações de um aluno no semestre, calcular e escrever a
+            média semestral e a seguinte mensagem: PARABÉNS! Você foi aprovado! somente se o aluno foi aprovado
+            (considere 6.0 a média mínima para aprovação). </p>
 
-            <p> 4) Acrescente ao exercício anterior a mensagem Você foi REPROVADO! Estude mais... caso a média calculada seja menor que 6.0.</p>
-        </h4>
+        <p> 4) Acrescente ao exercício anterior a mensagem Você foi REPROVADO! Estude mais... caso a média calculada
+            seja menor que 6.0.</p>
 
-        <div class="form-group">
-            <input type="number" name="nota1" id="nota1" class="form-control"
-                placeholder="Nota 1">
-        </div>
+        <form>
+            <div class="form-group">
+                <input type="text" name="nome" id="nome" class="form-control require" placeholder="Nome">
+            </div>
 
-        <div class="form-group">
-            <input type="number" name="nota2" id="nota2" class="form-control"
-                placeholder="Nota 2">
-        </div>
+            <div class="form-group">
+                <input type="number" name="nota1" id="nota1" class="form-control require" placeholder="Nota 1" max="10">
+            </div>
 
-        <div class="form-group">
-            <input type="number" name="optativa" id="optativa" class="form-control"
-                placeholder="Optativa">
-        </div>
-        
-        <div class="form-group">
-            <button class="btn btn-primary" onclick="resultado(
+            <div class="form-group">
+                <input type="number" name="nota2" id="nota2" class="form-control require" placeholder="Nota 2" max="10">
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="optativa" id="optativa" class="form-control" placeholder="Optativa">
+            </div>
+
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-primary" onclick="resultado(
+                document.getElementById('nome').value,
                 document.getElementById('nota1').value,
                 document.getElementById('nota2').value,
                 document.getElementById('optativa').value)
-                "> Calcular </button>
-        </div>
+                "> Salvar </button>
+
+                <button type="reset" class=" btn btn-danger mx-1"> Limpar</button>
+            </div>
+        </form>
 
         <div id="saidaTexto"></div>
 
@@ -66,7 +76,3 @@
 </body>
 
 </html>
-
-<!-- 
-
--->

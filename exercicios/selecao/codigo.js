@@ -1,9 +1,30 @@
 
+class Aluno {
+    constructor(nome, nota1, nota2, optativa, result) {
+        this.nome = nome;
+        this.nota1 = nota1;
+        this.nota2 = nota2;
+        this.optativa = optativa;
+        this.resultado = result;
+        this.media = this.media();
+    }
+
+    media() {
+        return (parseFloat(this.nota1) + parseFloat(this.nota2)) / 2;
+    }
+}
+
+var alunos = [];
+
+
 function media(nota1, nota2) {
     return (parseFloat(nota1) + parseFloat(nota2)) / 2;
 }
 
-function resultado(nota1, nota2, optativa = -1) {
+
+function resultado(nome, nota1, nota2, optativa = -1) {
+    var result = "";
+    var texto = "";
     if (optativa >= 6) {
         if (nota1 < 6) {
             nota1 = optativa;
@@ -13,15 +34,46 @@ function resultado(nota1, nota2, optativa = -1) {
     }
     var mediaSementre = media(nota1, nota2);
     if (mediaSementre >= 6) {
-        saida("<p class= 'alert alert-success'> APROVADO! Sua media: " + mediaSementre.toFixed(2) + "</p>");
+        texto = ("<p class= 'alert alert-success'> APROVADO! Sua media: " + mediaSementre.toFixed(2) + "</p>");
+        result = "Aprovado";
     } else if (mediaSementre < 3) {
-        saida("<p class= 'alert alert-danger'> REPROVADO! Sua media: " + mediaSementre.toFixed(2) + "</p>");
+        texto = ("<p class= 'alert alert-danger'> REPROVADO! Sua media: " + mediaSementre.toFixed(2) + "</p>");
+        result = "Reprovado";
     } else {
-        saida("<p class= 'alert alert-warning'> Em EXAME! Sua media: " + mediaSementre.toFixed(2) + "</p>");
+        texto = ("<p class= 'alert alert-warning'> Em EXAME! Sua media: " + mediaSementre.toFixed(2) + "</p>");
+        result = "Exame";
     }
+    var aluno = new Aluno(nome, nota1, nota2, optativa, result);
+    addAluno(aluno, texto);
 }
+
 
 function saida(texto) {
     document.getElementById("saidaTexto").innerHTML = texto;
+}
 
+
+function addAluno(aluno, texto) {
+    if (valida()) {
+        alunos.push(aluno);
+        document.forms[0].reset();
+        console.log(alunos);
+        saida(texto);
+    }
+    //console.log(document.getElementsByTagName('p'));
+}
+
+function valida() {
+    var elementos = document.getElementsByClassName("require");
+    var status = true;
+    for (var element of elementos) {
+        //console.log(element.value);
+        if (element.value == "") {
+            element.style = "border: solid 2px #f00";
+            status = false;
+        } else {
+            element.style = "";
+        }
+    }
+    return status;
 }

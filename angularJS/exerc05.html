@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="">
+    <section class="container">
+        <p>
+            <b>
+                5) Escreva um programa para ler as dimensões de uma cozinha retangular (comprimento, largura e altura),
+                calcular e escrever a quantidade de caixas de azulejos para se colocar em todas as suas paredes
+                (considere que não será descontada a área ocupada por portas e janelas). Cada caixa de azulejos possui
+                1,5 m2.
+            </b>
+        </p>
+
+        <div class="form-group">
+            <input type="number" name="comprimento" id="comprimento" class="form-control" placeholder="Comprimento"  ng-model="comprimento" value="0">
+        </div>
+        <div class="form-group">
+            <input type="number" name="largura" id="largura" class="form-control" placeholder="Largura"  ng-model="largura" value="0"> 
+        </div>
+        <div class="form-group">
+            <input type="number" name="altura" id="altura" class="form-control" placeholder="Altura" ng-model="altura" value="0">
+        </div>
+ 
+        <p> Comprimento: {{ comprimento }} </p>
+        <p> Largura: {{ largura }} </p>
+        <p> Altura: {{ altura }} </p>
+        <p class="alert alert-danger" ng-if="altura && comprimento && largura"> Quantidade de Caixa:<strong> {{ (((comprimento*altura) + (largura*altura)) / 1.5) * 2 | number:2}} </strong></p>
+
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

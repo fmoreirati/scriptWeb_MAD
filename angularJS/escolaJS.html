@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- AngularJS -->
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-sanitize.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <section class="container" ng-controller="myCtrl">
+        <p> 2) Escreva um programa que leia as notas das duas avaliações normais e a nota da avaliação optativa.
+            Caso o aluno não tenha feito a optativa deve ser fornecido o valor -1. Calcular a média do semestre
+            considerando que a prova optativa substitui a nota mais baixa entre as duas primeiras avaliações. Escrever a
+            média e mensagens que indiquem se o aluno foi aprovado, reprovado ou está em exame, de acordo com as
+            informações abaixo:
+        <ul>
+            <li> Aprovado : média >= 6.0</li>
+            <li> Reprovado: media < 3.0 </li>
+            <li> Exame: média>= 3.0 e < 6.0 </li>
+        </ul>
+        </p>
+
+        <p> 3) Escreva um programa para ler as notas das duas avaliações de um aluno no semestre, calcular e escrever a
+            média semestral e a seguinte mensagem: PARABÉNS! Você foi aprovado! somente se o aluno foi aprovado
+            (considere 6.0 a média mínima para aprovação). </p>
+
+        <p> 4) Acrescente ao exercício anterior a mensagem Você foi REPROVADO! Estude mais... caso a média calculada
+            seja menor que 6.0.</p>
+
+        <form>
+            <div class="form-group">
+                <input type="text" name="nome" ng-model="nome" class="form-control require" placeholder="Nome">
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="nota1" ng-model="nota1" class="form-control require" placeholder="Nota 1"
+                    max="10">
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="nota2" ng-model="nota2" class="form-control require" placeholder="Nota 2"
+                    max="10">
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="optativa" ng-model="optativa" class="form-control" placeholder="Optativa">
+            </div>
+
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-primary" ng-click="resultado()"> Salvar </button>
+                <button type="reset" class=" btn btn-danger mx-1"> Limpar</button>
+            </div>
+        </form>
+
+        <div ng-if="aviso" ng-bind-html="aviso"></div>
+
+        <div>
+            <table class='table'>
+                <tr>
+                    <th> Nome </th>
+                    <th> Nota 1 </th>
+                    <th> Nota 2 </th>
+                    <th> Média </th>
+                    <th> Resultado </th>
+                    <th> X </th>
+                </tr>
+                <tr ng-repeat="aluno in alunos">
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.nota1 }}</td>
+                    <td>{{ aluno.nota2 }}</td>
+                    <td>{{ aluno.media }}</td>
+                    <td>{{ aluno.resultado }}</td>
+                    <td ng-click='removeAluno()'> X </td>
+                </tr>
+
+        </div>
+
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/codigo.js"></script>
+    <script src="js/lib/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/lib/popper.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+</body>
+
+</html>

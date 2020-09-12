@@ -1,0 +1,44 @@
+<section class="container">
+        <form action="" class="row">
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label for="">Nome</label>
+                    <input type="text" name="nome" [(ngModel)]="usuario.nome" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">E-mail</label>
+                    <input type="email" name="email" [(ngModel)]="usuario.email" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Telefone</label>
+                    <input type="tel" name="tel" [(ngModel)]="usuario.tel" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label for="">Senha</label>
+                    <input type="password" name="pws" [(ngModel)]="usuario.pws" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Confirmação da senha</label>
+                    <input type="password" name="nome" [(ngModel)]="conf" class="form-control">
+                </div>
+
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Escolha uma Foto</label>
+                </div>
+
+                <div class="form-group text-right py-2">
+                    <button type="submit" class="btn btn-primary"> Salvar </button>
+                    <button type="reset" class="btn btn-danger ml-1"> Cancelar </button>
+                </div>
+            </div>
+        </form>
+
+        {{usuario.nome}} {{usuario.tel}}
+</section>

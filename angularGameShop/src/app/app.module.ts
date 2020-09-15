@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrMaskerModule } from 'br-mask';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,7 @@ import { PageFooterComponent } from './view/page-footer/page-footer.component';
 import { PageHomeComponent } from './view/page-home/page-home.component';
 import { UsuarioFormComponent } from './view/usuario-form/usuario-form.component';
 import { UsuarioPerfilComponent } from './view/usuario-perfil/usuario-perfil.component';
+import { EnderecoFormComponent } from './view/endereco-form/endereco-form.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { UsuarioPerfilComponent } from './view/usuario-perfil/usuario-perfil.com
     PageFooterComponent,
     PageHomeComponent,
     UsuarioFormComponent,
-    UsuarioPerfilComponent
+    UsuarioPerfilComponent,
+    EnderecoFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrMaskerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

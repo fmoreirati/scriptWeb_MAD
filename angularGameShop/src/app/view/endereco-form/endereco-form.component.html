@@ -1,9 +1,9 @@
 <h4>Endereços:</h4>
 
-<div class="form-group">
-    <label for="">CEP</label>
-    <input type="text" name="cep" [(ngModel)]="cep" class="form-control">
-    <button type="button" (click)="buscaCEP()"> Buscar </button>
+<div class="form-inline my-2 my-lg">
+    <input class="form-control mr-sm-2" type="text" name="cep" [(ngModel)]="cep" placeholder="Busca CEP">
+    <button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="button" (click)="buscaCEP()">Busca</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="addEndereco()">Adiciona</button>
 </div>
 
 <div class="form-group">
@@ -25,3 +25,15 @@
     <label for="">UF</label>
     <input type="text" name="cep" [(ngModel)]="endereco.uf" class="form-control">
 </div>
+
+<div class="form-group">
+    <label for="">Numero</label>
+    <input type="text" name="cep" [(ngModel)]="endereco.numero" class="form-control">
+</div>
+
+<div class="form-group">
+    <label for="">Complemento</label>
+    <input type="text" name="cep" [(ngModel)]="endereco.complementos" class="form-control">
+</div>
+
+{{id}}

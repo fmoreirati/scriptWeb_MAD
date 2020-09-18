@@ -1,1 +1,27 @@
-<p>usuario-perfil works!</p>
+<section class="container">
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="text-center">
+                <img [src]="usuario.foto" alt="" class="rounded-circle" *ngIf="usuario.foto">
+                <img src="assets/perfil.jpeg" alt="" class="rounded-circle" *ngIf="!usuario.foto">
+            </div>
+
+            <p><strong>Nome</strong><br>
+            {{usuario.nome}}</p>
+
+            <p><strong>E-mail</strong><br>
+             {{usuario.email}}</p>
+
+            <p><strong>Telefone</strong><br>
+            {{usuario.tel}}</p>
+
+        </div>
+
+        <div class="col-12 col-md-6">
+            <app-endereco-form [id]="id" (enviaEndereco)="recebeEndereco($event)"></app-endereco-form>
+            
+        </div>
+    </div>
+
+</section>

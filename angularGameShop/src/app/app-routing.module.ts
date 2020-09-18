@@ -12,7 +12,7 @@ const routes: Routes = [
     path:"formUser", component:UsuarioFormComponent
   },
   {
-    path:"perfilUser", component:UsuarioPerfilComponent
+    path:"perfilUser/:rapadura", component:UsuarioPerfilComponent
   }
 ];
 

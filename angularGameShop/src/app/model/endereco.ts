@@ -9,4 +9,7 @@ export class Endereco {
     logradouro: string;
     //siafi: string;
     uf: string;
+
+    numero:string;
+    complementos:string;
 }

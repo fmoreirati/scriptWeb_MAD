@@ -68,6 +68,28 @@
         }
       ],
       "id": 5
+    },
+    {
+      "ativo": true,
+      "endereco": [
+        {
+          "cep": "23520-110",
+          "logradouro": "Rua Juçara",
+          "complemento": "",
+          "bairro": "Santa Cruz",
+          "localidade": "Rio de Janeiro",
+          "uf": "RJ",
+          "ibge": "3304557",
+          "gia": "",
+          "ddd": "21",
+          "siafi": "6001"
+        }
+      ],
+      "nome": "Maria",
+      "email": "maria@email.com",
+      "tel": "(11) 11111-12213",
+      "pws": "111111",
+      "id": 6
     }
   ]
 }

@@ -9,13 +9,12 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class EnderecoFormComponent implements OnInit {
   @Input() public id: string;
+  @Output() enviaEndereco = new EventEmitter<Endereco>();
 
   public endereco: Endereco = new Endereco;
   public cep: string = "";
   public numero: string = "";
   public complementoLocal: string = "";
-
-  @Output() enviaEndereco = new EventEmitter<Endereco>();
 
   constructor(
     private usuarioService: UsuarioService

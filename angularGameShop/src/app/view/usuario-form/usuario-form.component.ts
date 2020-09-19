@@ -25,7 +25,7 @@ export class UsuarioFormComponent implements OnInit {
 
   onSubmit(form) {
     //console.log("Usuario: \n", this.usuario, "Form: \n", form);
-    this.usuarioService.addUser(this.usuario).subscribe(
+    this.usuarioService.addUser(this.usuario).then(
       res => {
         alert("Cadastrado!");
         form.reset();

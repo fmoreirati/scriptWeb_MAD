@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "scriptangularmad": {
+      "hosting": {
+        "angularGameShop": [
+          "scriptangularmad"
+        ]
+      }
+    }
+  }
+}

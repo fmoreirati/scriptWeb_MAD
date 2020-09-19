@@ -14,6 +14,11 @@ import { UsuarioFormComponent } from './view/usuario-form/usuario-form.component
 import { UsuarioPerfilComponent } from './view/usuario-perfil/usuario-perfil.component';
 import { EnderecoFormComponent } from './view/endereco-form/endereco-form.component';
 
+// Firebase ----
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +35,9 @@ import { EnderecoFormComponent } from './view/endereco-form/endereco-form.compon
     AppRoutingModule,
     FormsModule,
     BrMaskerModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

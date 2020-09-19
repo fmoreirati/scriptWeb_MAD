@@ -13,8 +13,6 @@ export class UsuarioPerfilComponent implements OnInit {
   public id: string = null;
   public usuario: Usuario = new Usuario;
 
-
-
   constructor(
     private activatedRouter: ActivatedRoute,
     private usuarioService: UsuarioService

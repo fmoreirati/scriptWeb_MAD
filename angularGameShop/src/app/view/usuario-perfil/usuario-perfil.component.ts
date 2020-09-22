@@ -26,12 +26,27 @@ export class UsuarioPerfilComponent implements OnInit {
           this.usuario = res;
         }
       )
+      this.usuarioService.getAllEndereco(this.id).subscribe(
+        res => {
+          this.usuario.endereco = res
+        })
     }
   }
 
   recebeEndereco(event) {
     console.log("Endereço recebido:\n", event);
-
   }
 
+  marcarPrincipal(index) {
+    let i = 0;
+    for (let endereco of this.usuario.endereco) {
+      if (i == index) {
+        endereco.principal = true
+      } else {
+        endereco.principal = false
+      }
+      i++
+    }
+    //this.usuario.endereco[index].principal = !this.usuario.endereco[index].principal
+  }
 }

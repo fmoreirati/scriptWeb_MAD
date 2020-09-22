@@ -12,4 +12,9 @@ export class Endereco {
 
     numero:string;
     complementos:string;
+
+    principal:boolean = false;
+
+    erro:boolean = false;
+    
 }

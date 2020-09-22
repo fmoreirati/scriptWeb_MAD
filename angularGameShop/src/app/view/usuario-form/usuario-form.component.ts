@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Endereco } from 'src/app/model/endereco';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from '../../model/usuario';
 
@@ -13,13 +12,14 @@ export class UsuarioFormComponent implements OnInit {
 
   public usuario: Usuario = new Usuario;
   public conf: string = "";
-  
+
   constructor(
     private usuarioService: UsuarioService,
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    
   }
 
 
@@ -29,8 +29,8 @@ export class UsuarioFormComponent implements OnInit {
       res => {
         alert("Cadastrado!");
         form.reset();
-        this.router.navigate(['perfilUser', res.id]);
-
+        //console.log(res);
+        //this.router.navigate(['perfilUser', res.id]);
       },
       err => {
         alert("Não foi possivel fazer o cadastro!");

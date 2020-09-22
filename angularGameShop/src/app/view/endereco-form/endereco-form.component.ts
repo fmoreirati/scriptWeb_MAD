@@ -28,26 +28,30 @@ export class EnderecoFormComponent implements OnInit {
       res => {
         this.endereco = res;
         console.log(res);
-        this.enviaEndereco.emit(res);
+        if (res.erro) {
+          alert("Endereço não localizado!");
+        } else {
+          this.enviaEndereco.emit(res);
+        };
       },
       err => {
         console.error(err);
-        alert("Endereço não localizado!")
+        alert("Não foi possivel fazer a busca do CEP!");
       }
     )
   }
 
   addEndereco() {
-    this.usuarioService.addEndereco(this.endereco, this.id).subscribe(
+    this.usuarioService.addEndereco(this.endereco, this.id).then(
       res => {
-        alert("Adicionado")
-        this.endereco = new Endereco
+        alert("Adicionado");
+        this.endereco = new Endereco;
         this.cep = ""
-        console.log(res)
+        //console.log(res);
       },
       err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   }
 
 }

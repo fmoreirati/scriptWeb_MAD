@@ -8,19 +8,31 @@
             </div>
 
             <p><strong>Nome</strong><br>
-            {{usuario.nome}}</p>
+                {{usuario.nome}}</p>
 
             <p><strong>E-mail</strong><br>
-             {{usuario.email}}</p>
+                {{usuario.email}}</p>
 
             <p><strong>Telefone</strong><br>
-            {{usuario.tel}}</p>
+                {{usuario.tel}}</p>
 
+            <table class="table">
+                <tr *ngFor="let endereco of usuario.endereco;let i=index" (click)="marcarPrincipal(i)">
+                    <thead [ngClass]="{'bg-success':endereco.principal ,'head-light':!endereco.principal}">
+                        <td>{{endereco.cep}}</td>
+                        <td>{{endereco.logradouro}}</td>
+                        <td>{{endereco.bairro}}</td>
+                        <td>{{endereco.localidade}}</td>
+                        <td>{{endereco.uf}}</td>
+                        <td>{{endereco.numero}}</td>
+                        <td>{{endereco.complementos}}</td>
+                    </thead>
+                </tr>
+            </table>
         </div>
 
         <div class="col-12 col-md-6">
             <app-endereco-form [id]="id" (enviaEndereco)="recebeEndereco($event)"></app-endereco-form>
-            
         </div>
     </div>
 

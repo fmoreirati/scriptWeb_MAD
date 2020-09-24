@@ -19,18 +19,7 @@ export class UsuarioPerfilComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.id = this.activatedRouter.snapshot.paramMap.get("rapadura");
-    if (this.id) {
-      this.usuarioService.getUser(this.id).subscribe(
-        res => {
-          this.usuario = res;
-        }
-      )
-      this.usuarioService.getAllEndereco(this.id).subscribe(
-        res => {
-          this.usuario.endereco = res
-        })
-    }
+    this.verificarUser()
   }
 
   recebeEndereco(event) {
@@ -39,14 +28,45 @@ export class UsuarioPerfilComponent implements OnInit {
 
   marcarPrincipal(index) {
     let i = 0;
+    let key = "";
     for (let endereco of this.usuario.endereco) {
       if (i == index) {
-        endereco.principal = true
+        endereco.principal = true;
+        key = endereco.id;
       } else {
         endereco.principal = false
       }
       i++
     }
-    //this.usuario.endereco[index].principal = !this.usuario.endereco[index].principal
+    this.usuarioService.definirPrincipal(this.id,key);
+  }
+
+  verificarUser() {
+    this.usuarioService.auth.user.subscribe(
+      res => {
+        this.id = res.uid;
+        this.usuarioService.getUser(this.id).subscribe(
+          res => {
+            this.usuario = res;
+          }
+        )
+        this.usuarioService.getAllEndereco(this.id).subscribe(
+          res => {
+            this.usuario.endereco = res
+          })
+      }
+    )
+    //this.id = this.activatedRouter.snapshot.paramMap.get("rapadura");
+    // if (this.id) {
+    //   this.usuarioService.getUser(this.id).subscribe(
+    //     res => {
+    //       this.usuario = res;
+    //     }
+    //   )
+    //   this.usuarioService.getAllEndereco(this.id).subscribe(
+    //     res => {
+    //       this.usuario.endereco = res
+    //     })
+    // }
   }
 }

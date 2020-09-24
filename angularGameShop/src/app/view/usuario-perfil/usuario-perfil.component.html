@@ -19,6 +19,7 @@
             <table class="table">
                 <tr *ngFor="let endereco of usuario.endereco;let i=index" (click)="marcarPrincipal(i)">
                     <thead [ngClass]="{'bg-success':endereco.principal ,'head-light':!endereco.principal}">
+                        <td>{{i + 1}}</td> 
                         <td>{{endereco.cep}}</td>
                         <td>{{endereco.logradouro}}</td>
                         <td>{{endereco.bairro}}</td>

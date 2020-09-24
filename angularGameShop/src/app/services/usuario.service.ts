@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class UsuarioService {
   constructor(
     private http: HttpClient,
     private firedb: AngularFirestore,
-    public auth: AngularFireAuth
+    public auth: AngularFireAuth,
+    private router: Router
   ) { }
 
   // ViaCEP e Endereco -----------------------------------------------
@@ -41,12 +43,12 @@ export class UsuarioService {
   }
 
   addEndereco(endereco: Endereco, iduser) {
-    let user: Usuario = new Usuario;
-    this.getUser(iduser).subscribe(
-      res => {
-        user = res
-      }
-    )
+    //let user: Usuario = new Usuario;
+    // this.getUser(iduser).subscribe(
+    //   res => {
+    //     user = res
+    //   }
+    // )
     //user.endereco.push(endereco);
     //return this.http.patch(this.localURL + this.colletionUser + "/" + iduser, user);
     //return this.firedb.collection("endereco").add(endereco).then(
@@ -57,6 +59,12 @@ export class UsuarioService {
     // )
     return this.firedb.collection(this.colletionUser).doc(iduser).collection("endereco").add(endereco);
 
+  }
+
+  definirPrincipal(keyUser, keyEndereco){
+    return this.firedb.collection(this.colletionUser).doc(keyUser).update({
+      enderecoPrincipal: keyEndereco
+    })
   }
 
   // Usuarios -----------------------------------------------
@@ -76,7 +84,7 @@ export class UsuarioService {
           }
         ).catch(
           err => {
-            this.auth.currentUser.then(
+            this.auth.user.subscribe(
               res => {
                 res.delete
                 console.log(err)
@@ -105,5 +113,15 @@ export class UsuarioService {
         )
       )
   }
+
+  logout() {
+    this.auth.signOut().then(
+      res => {
+        this.router.navigate(["/"])
+        console.log(res);
+      },
+      err => console.log(err)
+    )
+  };
 
 }

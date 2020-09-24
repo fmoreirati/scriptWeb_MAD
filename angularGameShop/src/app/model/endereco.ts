@@ -16,5 +16,4 @@ export class Endereco {
     principal:boolean = false;
 
     erro:boolean = false;
-    
 }

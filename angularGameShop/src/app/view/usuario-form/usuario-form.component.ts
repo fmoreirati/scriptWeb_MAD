@@ -30,7 +30,10 @@ export class UsuarioFormComponent implements OnInit {
         alert("Cadastrado!");
         form.reset();
         //console.log(res);
-        //this.router.navigate(['perfilUser', res.id]);
+        this.usuarioService.auth.user.subscribe(
+          userLogado =>  this.router.navigate(['perfilUser', userLogado.uid])
+        )
+      
       },
       err => {
         alert("Não foi possivel fazer o cadastro!");

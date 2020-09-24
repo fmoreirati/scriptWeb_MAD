@@ -19,6 +19,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { UsuarioLoginComponent } from './view/usuario-login/usuario-login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     PageHomeComponent,
     UsuarioFormComponent,
     UsuarioPerfilComponent,
-    EnderecoFormComponent
+    EnderecoFormComponent,
+    UsuarioLoginComponent
   ],
   imports: [
     BrowserModule,

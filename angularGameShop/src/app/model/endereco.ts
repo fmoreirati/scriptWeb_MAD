@@ -1,4 +1,5 @@
 export class Endereco {
+    id: string;
     bairro:string;
     cep: string;
     complemento: string;
@@ -13,7 +14,7 @@ export class Endereco {
     numero:string;
     complementos:string;
 
-    principal:boolean = false;
+    tipo:string; //Nome dado ao endereço
 
     erro:boolean = false;
 }

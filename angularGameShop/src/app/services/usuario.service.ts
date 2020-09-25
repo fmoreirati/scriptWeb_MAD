@@ -61,10 +61,16 @@ export class UsuarioService {
 
   }
 
-  definirPrincipal(keyUser, keyEndereco){
-    return this.firedb.collection(this.colletionUser).doc(keyUser).update({
-      enderecoPrincipal: keyEndereco
-    })
+  definirPrincipal(keyUser, keyEndereco) {
+    return this.firedb.collection(this.colletionUser).doc(keyUser).update(
+      {
+        enderecoPrincipal: keyEndereco
+      }
+    )
+  }
+
+  getOneEndereco(idEndereco, idUsuario){
+    return this.firedb.collection(this.colletionUser).doc(idUsuario).collection("endereco").doc<Endereco>(idEndereco).valueChanges();
   }
 
   // Usuarios -----------------------------------------------

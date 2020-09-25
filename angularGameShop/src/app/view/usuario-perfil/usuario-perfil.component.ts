@@ -12,6 +12,7 @@ export class UsuarioPerfilComponent implements OnInit {
 
   public id: string = null;
   public usuario: Usuario = new Usuario;
+  public idEndereco: string = null;
 
   constructor(
     private activatedRouter: ActivatedRoute,
@@ -26,19 +27,15 @@ export class UsuarioPerfilComponent implements OnInit {
     console.log("Endereço recebido:\n", event);
   }
 
-  marcarPrincipal(index) {
-    let i = 0;
-    let key = "";
-    for (let endereco of this.usuario.endereco) {
-      if (i == index) {
-        endereco.principal = true;
-        key = endereco.id;
-      } else {
-        endereco.principal = false
-      }
-      i++
-    }
-    this.usuarioService.definirPrincipal(this.id,key);
+  marcarPrincipal(idEndereco) {
+    this.usuarioService.definirPrincipal(this.id, idEndereco).then(
+      () => {
+        // this.verificarUser()
+        this.usuarioService.getAllEndereco(this.id).subscribe(
+          res => {
+            this.usuario.endereco = res
+          })
+      });
   }
 
   verificarUser() {
@@ -68,5 +65,14 @@ export class UsuarioPerfilComponent implements OnInit {
     //       this.usuario.endereco = res
     //     })
     // }
+  }
+
+
+  atualizarEndereco(id){ // id ou key ou uid
+    this.idEndereco = id;
+  }
+
+  removerEndereco(id){
+     
   }
 }

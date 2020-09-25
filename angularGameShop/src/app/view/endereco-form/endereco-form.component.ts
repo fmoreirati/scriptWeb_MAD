@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Endereco } from 'src/app/model/endereco';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -7,8 +7,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   templateUrl: './endereco-form.component.html',
   styleUrls: ['./endereco-form.component.css']
 })
-export class EnderecoFormComponent implements OnInit {
-  @Input() public id: string;
+export class EnderecoFormComponent implements OnChanges {
+  @Input() public idUser: string;
+  @Input() public idEndereco: string;
   @Output() enviaEndereco = new EventEmitter<Endereco>();
 
   public endereco: Endereco = new Endereco;
@@ -23,6 +24,15 @@ export class EnderecoFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    // changes.prop contains the old and the new value...
+    if (this.idEndereco) {
+      this.usuarioService.getOneEndereco(this.idEndereco, this.idUser).subscribe(
+        res => this.endereco = res
+      )
+    }
+  }
+  
   buscaCEP() {
     this.usuarioService.getEndereco(this.cep).subscribe(
       res => {
@@ -42,7 +52,7 @@ export class EnderecoFormComponent implements OnInit {
   }
 
   addEndereco() {
-    this.usuarioService.addEndereco(this.endereco, this.id).then(
+    this.usuarioService.addEndereco(this.endereco, this.idUser).then(
       res => {
         alert("Adicionado");
         this.endereco = new Endereco;

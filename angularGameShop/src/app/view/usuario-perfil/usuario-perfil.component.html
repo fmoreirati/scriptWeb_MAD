@@ -17,23 +17,24 @@
                 {{usuario.tel}}</p>
 
             <table class="table">
-                <tr *ngFor="let endereco of usuario.endereco;let i=index" (click)="marcarPrincipal(i)">
-                    <thead [ngClass]="{'bg-success':endereco.principal ,'head-light':!endereco.principal}">
-                        <td>{{i + 1}}</td> 
+                <tr *ngFor="let endereco of usuario.endereco;let i=index">
+                    <thead [ngClass]="{'bg-success':usuario.enderecoPrincipal == endereco.id ,'head-light':usuario.enderecoPrincipal != endereco.id }">
+                        <td (click)="marcarPrincipal(endereco.id)">{{i + 1}}</td> 
                         <td>{{endereco.cep}}</td>
                         <td>{{endereco.logradouro}}</td>
                         <td>{{endereco.bairro}}</td>
                         <td>{{endereco.localidade}}</td>
                         <td>{{endereco.uf}}</td>
                         <td>{{endereco.numero}}</td>
-                        <td>{{endereco.complementos}}</td>
+                        <td (click)="atualizarEndereco(endereco.id)"> / </td>
+                        <td (click)="removerEndereco(endereco.id)"> X </td>
                     </thead>
                 </tr>
             </table>
         </div>
 
         <div class="col-12 col-md-6">
-            <app-endereco-form [id]="id" (enviaEndereco)="recebeEndereco($event)"></app-endereco-form>
+            <app-endereco-form [idUser]="id" [idEndereco] = "idEndereco" (enviaEndereco)="recebeEndereco($event)"></app-endereco-form>
         </div>
     </div>
 

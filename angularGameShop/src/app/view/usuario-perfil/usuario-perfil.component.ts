@@ -23,10 +23,6 @@ export class UsuarioPerfilComponent implements OnInit {
     this.verificarUser()
   }
 
-  recebeEndereco(event) {
-    console.log("Endereço recebido:\n", event);
-  }
-
   marcarPrincipal(idEndereco) {
     this.usuarioService.definirPrincipal(this.id, idEndereco).then(
       () => {
@@ -68,11 +64,19 @@ export class UsuarioPerfilComponent implements OnInit {
   }
 
 
-  atualizarEndereco(id){ // id ou key ou uid
-    this.idEndereco = id;
+  atualizarEndereco(idEndedeco){ // id ou key ou uid
+    this.idEndereco = idEndedeco;
   }
 
-  removerEndereco(id){
-     
+  removerEndereco(idEndedeco){
+    if (confirm("Deseja apagar o Endereço?")){
+     this.usuarioService.removerEndereco(idEndedeco, this.id)
+    } 
+    this.atualizarListaEndereco(null)
+  }
+
+  atualizarListaEndereco(event) {
+    //console.log("Endereço recebido:\n", event);
+    this.verificarUser()
   }
 }

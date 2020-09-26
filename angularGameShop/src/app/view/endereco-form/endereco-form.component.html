@@ -1,9 +1,14 @@
 <h4>Endereços:</h4>
 
 <div class="form-inline my-2 my-lg">
-    <input class="form-control mr-sm-2" type="number" name="cep" [(ngModel)]="cep" placeholder="Busca CEP" maxlength="9">
+    <input class="form-control mr-sm-2" type="text" name="cep" [(ngModel)]="cep" placeholder="Busca CEP" maxlength="9">
     <button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="button" (click)="buscaCEP()">Busca</button>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="addEndereco()">Adiciona</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="salvarEndereco()">Salvar</button>
+</div>
+
+<div class="form-group">
+    <label for="">Tipo de Endereco</label>
+    <input type="text" name="cep" [(ngModel)]="endereco.tipo" class="form-control">
 </div>
 
 <div class="form-group">

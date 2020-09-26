@@ -57,7 +57,20 @@ export class UsuarioService {
     //     return this.firedb.collection(this.colletionUser).doc(iduser).update({endereco : novoEndereco});
     //   }
     // )
-    return this.firedb.collection(this.colletionUser).doc(iduser).collection("endereco").add(endereco);
+    return this.firedb.collection(this.colletionUser).doc(iduser).collection("endereco").add(
+      {
+        //id: endereco.id,
+        cep: endereco.cep,
+        logradouro: endereco.logradouro,
+        bairro: endereco.bairro,
+        localidade: endereco.localidade,
+        uf: endereco.uf,
+        complemento: endereco.complemento = "",
+        numero: endereco.numero = "",
+        complementos: endereco.complementos = "",
+        tipo: endereco.tipo = ""
+      }
+    );
 
   }
 
@@ -69,8 +82,16 @@ export class UsuarioService {
     )
   }
 
-  getOneEndereco(idEndereco, idUsuario){
+  getOneEndereco(idEndereco, idUsuario) {
     return this.firedb.collection(this.colletionUser).doc(idUsuario).collection("endereco").doc<Endereco>(idEndereco).valueChanges();
+  }
+
+  updateEndereco(endereco: Endereco, idUsuario) {
+    return this.firedb.collection(this.colletionUser).doc(idUsuario).collection("endereco").doc<Endereco>(endereco.id).update(endereco);
+  }
+
+  removerEndereco(idEndereco, idUsuario){
+    return this.firedb.collection(this.colletionUser).doc(idUsuario).collection("endereco").doc(idEndereco).delete();
   }
 
   // Usuarios -----------------------------------------------
@@ -86,6 +107,7 @@ export class UsuarioService {
             ativo: usuario.ativo,
             foto: usuario.foto = "",
             //pws: usuario.pws,
+            enderecoPrincipal: usuario.enderecoPrincipal = "",
             endereco: usuario.endereco = [],
           }
         ).catch(

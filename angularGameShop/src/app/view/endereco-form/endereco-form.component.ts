@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class EnderecoFormComponent implements OnChanges {
   @Input() public idUser: string;
   @Input() public idEndereco: string;
-  @Output() enviaEndereco = new EventEmitter<Endereco>();
+  @Output() mandaAtualizarListaEndereco = new EventEmitter();
 
   public endereco: Endereco = new Endereco;
   public cep: string = "";
@@ -28,20 +28,25 @@ export class EnderecoFormComponent implements OnChanges {
     // changes.prop contains the old and the new value...
     if (this.idEndereco) {
       this.usuarioService.getOneEndereco(this.idEndereco, this.idUser).subscribe(
-        res => this.endereco = res
+        res => {
+          this.endereco = res
+          this.endereco.id = this.idEndereco
+          this.cep = this.endereco.cep
+        }
       )
     }
   }
-  
+
   buscaCEP() {
     this.usuarioService.getEndereco(this.cep).subscribe(
       res => {
         this.endereco = res;
-        console.log(res);
+        this.cep = this.endereco.cep;
+        console.log("Endereco ViaCEP:", res);
         if (res.erro) {
           alert("Endereço não localizado!");
         } else {
-          this.enviaEndereco.emit(res);
+          this.mandaAtualizarListaEndereco.emit(res);
         };
       },
       err => {
@@ -49,7 +54,18 @@ export class EnderecoFormComponent implements OnChanges {
         alert("Não foi possivel fazer a busca do CEP!");
       }
     )
+    this.idEndereco = "";
   }
+
+  salvarEndereco() {
+    if (this.idEndereco) {
+      this.updateEndereco()
+    } else {
+      this.addEndereco()
+    }
+    this.mandaAtualizarListaEndereco.emit();
+  }
+
 
   addEndereco() {
     this.usuarioService.addEndereco(this.endereco, this.idUser).then(
@@ -57,6 +73,20 @@ export class EnderecoFormComponent implements OnChanges {
         alert("Adicionado");
         this.endereco = new Endereco;
         this.cep = ""
+        //console.log(res);
+      },
+      err => {
+        console.log(err);
+      });
+  }
+
+  updateEndereco() {
+    this.usuarioService.updateEndereco(this.endereco, this.idUser).then(
+      res => {
+        alert("Atualiazado");
+        this.endereco = new Endereco;
+        this.cep = ""
+        this.idEndereco = "";
         //console.log(res);
       },
       err => {
